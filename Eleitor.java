@@ -1,13 +1,13 @@
 
-public class Eleitores {
-	
+public class Eleitor {
+
 	String nomeEleitor;
 	int tituloEleitora;
 	String municipioEleitoral;
 	int zonaEleitoral;
 	int secaoEleitoral;
 	
-	public Eleitores(String nomeEleitor, int tituloEleitora, String municipioEleitoral, int zonaEleitoral,
+	public Eleitor(String nomeEleitor, int tituloEleitora, String municipioEleitoral, int zonaEleitoral,
 			int secaoEleitoral) {
 		this.nomeEleitor = nomeEleitor;
 		this.tituloEleitora = tituloEleitora;

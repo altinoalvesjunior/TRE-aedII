@@ -1,5 +1,5 @@
 
-public class Candidatos {
+public class Candidato {
 	
 	String nomeCandidato;
 	int numeroCandidato;
@@ -7,7 +7,7 @@ public class Candidatos {
 	int siglaPartido;
 	char cargo;
 	
-	public Candidatos(String nomeCandidato, int numeroCandidato, String nomeMunicipioCandidato, int siglaPartido,
+	public Candidato(String nomeCandidato, int numeroCandidato, String nomeMunicipioCandidato, int siglaPartido,
 			char cargo) {
 		this.nomeCandidato = nomeCandidato;
 		this.numeroCandidato = numeroCandidato;
