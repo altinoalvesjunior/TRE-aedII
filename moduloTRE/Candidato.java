@@ -5,10 +5,10 @@ public class Candidato {
 	String nomeCandidato;
 	int numeroCandidato;
 	String nomeMunicipioCandidato;
-	int siglaPartido;
+	String siglaPartido;
 	char cargo;
 	
-	public Candidato(String nomeCandidato, int numeroCandidato, String nomeMunicipioCandidato, int siglaPartido,
+	public Candidato(String nomeCandidato, int numeroCandidato, String nomeMunicipioCandidato, String siglaPartido,
 			char cargo) {
 		this.nomeCandidato = nomeCandidato;
 		this.numeroCandidato = numeroCandidato;
@@ -41,11 +41,11 @@ public class Candidato {
 		this.nomeMunicipioCandidato = nomeMunicipioCandidato;
 	}
 
-	public int getSiglaPartido() {
+	public String getSiglaPartido() {
 		return siglaPartido;
 	}
 
-	public void setSiglaPartido(int siglaPartido) {
+	public void setSiglaPartido(String siglaPartido) {
 		this.siglaPartido = siglaPartido;
 	}
 
