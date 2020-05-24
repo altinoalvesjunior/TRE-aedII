@@ -1,3 +1,5 @@
+import moduloTRE.Files;
+
 // Classe criada para gerenciar inserções
 public class Store {
 

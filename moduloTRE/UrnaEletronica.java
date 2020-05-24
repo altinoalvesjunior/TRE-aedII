@@ -1,3 +1,4 @@
+package moduloTRE;
 
 public class UrnaEletronica {
 	String nomeMunicipioUrna;
