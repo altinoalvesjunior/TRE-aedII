@@ -1,9 +1,10 @@
 package moduloTRE;
 
 public class UrnaEletronica {
-	String nomeMunicipioUrna;
-	int zonaEleitoralUrna;
-	int secaoEleitoralUrna;
+	
+	private String nomeMunicipioUrna;
+	private int zonaEleitoralUrna;
+	private int secaoEleitoralUrna;
 	
 	public UrnaEletronica(String nomeMunicipioUrna, int zonaEleitoralUrna, int secaoEleitoralUrna) {
 		this.nomeMunicipioUrna = nomeMunicipioUrna;

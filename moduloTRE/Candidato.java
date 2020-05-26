@@ -2,11 +2,11 @@ package moduloTRE;
 
 public class Candidato {
 	
-	String nomeCandidato;
-	int numeroCandidato;
-	String nomeMunicipioCandidato;
-	String siglaPartido;
-	char cargo;
+	private String nomeCandidato;
+	private int numeroCandidato;
+	private String nomeMunicipioCandidato;
+	private String siglaPartido;
+	private char cargo;
 	
 	public Candidato(String nomeCandidato, int numeroCandidato, String nomeMunicipioCandidato, String siglaPartido,
 			char cargo) {

@@ -2,11 +2,11 @@ package moduloTRE;
 
 public class Eleitor {
 
-	String nomeEleitor;
-	int tituloEleitor;
-	String municipioEleitoral;
-	int zonaEleitoral;
-	int secaoEleitoral;
+	private String nomeEleitor;
+	private int tituloEleitor;
+	private String municipioEleitoral;
+	private int zonaEleitoral;
+	private int secaoEleitoral;
 	
 	public Eleitor(String nomeEleitor, int tituloEleitor, String municipioEleitoral, int zonaEleitoral,
 			int secaoEleitoral) {

@@ -2,10 +2,10 @@ package moduloTRE;
 
 public class Municipio {
 	
-	String nomeMunicipio;
-	String estado;
-	int quantidadeHabitantes;
-	int numVagasVereador;
+	private String nomeMunicipio;
+	private String estado;
+	private int quantidadeHabitantes;
+	private int numVagasVereador;
 	
 	public Municipio(String nomeMunicipio, String estado, int quantidadeHabitantes, int numVagasVereador) {
 		this.nomeMunicipio = nomeMunicipio;

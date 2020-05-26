@@ -41,7 +41,7 @@ public class ArquivoTextoEscrita {
 			saida.newLine();
 		}
 		catch (IOException excecao){
-			System.out.println("Erro de entrada/sa�da " + excecao);
+			System.out.println("Erro: " + excecao);
 		}
 	}
 }

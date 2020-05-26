@@ -2,8 +2,8 @@ package moduloTRE;
 
 public class PartidoPolitico {
 	
-	String nomePartido;
-	String siglaPartido;
+	private String nomePartido;
+	private String siglaPartido;
 	
 	public PartidoPolitico(String nomePartido, String siglaPartido) {
 		this.nomePartido = nomePartido;
