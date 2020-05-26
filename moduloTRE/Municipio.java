@@ -13,6 +13,11 @@ public class Municipio {
 		this.quantidadeHabitantes = quantidadeHabitantes;
 		this.numVagasVereador = numVagasVereador;
 	}
+	
+	public Municipio(String nomeMunicipio, String estado) {
+		this.nomeMunicipio = nomeMunicipio;
+		this.estado = estado;
+	}
 
 	public String getNomeMunicipio() {
 		return nomeMunicipio;

@@ -1,3 +1,5 @@
+package moduloTRE;
+
 class Main {
   public static void main(String[] args) {
     Store cadastro;
