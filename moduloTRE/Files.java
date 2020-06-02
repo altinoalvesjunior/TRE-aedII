@@ -58,7 +58,7 @@ public class Files {
   * arquivo
   */
   public void lerDadosArquivo(String nomeArquivo) {
-    try{
+  	try{
 			
 			// String nome;
 			// nome = JOptionPane.showInputDialog(null,"Entre com o nome do arquivo");
@@ -66,8 +66,8 @@ public class Files {
 			BufferedReader br = new BufferedReader(new FileReader(nomeArquivo));
 			while(br.ready()){
 				String linha = br.readLine();
-				System.out.println("-> " + linha);
-			}
+			System.out.println("-> " + linha);
+		}
 			br.close();
 		}catch(IOException ioe){
 			ioe.printStackTrace();

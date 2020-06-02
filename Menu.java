@@ -1,4 +1,6 @@
 import java.io.*;
+
+import moduloUrna.Configuracao;
 class Menu {
   BufferedReader br =new BufferedReader(new InputStreamReader(System.in));
 
@@ -130,6 +132,7 @@ class Menu {
   */
   public void etapa1URNA() {
     // chamar método de configurar urna eletronica
+	  Configuracao urna = new Configuracao(null, null, null);
   }
 
   public void etapa2() {

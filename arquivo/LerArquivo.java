@@ -1,7 +1,13 @@
-package moduloTRE;
+package arquivo;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+
+import moduloTRE.Candidato;
+import moduloTRE.Eleitor;
+import moduloTRE.Municipio;
+import moduloTRE.PartidoPolitico;
+import moduloTRE.UrnaEletronica;
 
 public class LerArquivo {
 
@@ -73,17 +79,12 @@ public class LerArquivo {
 				String vetorString[] = linha.split(";");
 				municipios[i] = new Municipio (vetorString[0],vetorString[1], Integer.parseInt(vetorString[2]), Integer.parseInt(vetorString[3]));
 				aux = aux.prox;
+				
 				if(aux!=null) {
-				linha = aux.objeto.toString();}
-			
-	
+					
+				linha = aux.objeto.toString();
+				}
 			}
-			
-			for (int i =0; i<linhasArquivo.getTamanho(); i++) {
-				System.out.println(municipios[i].nomeMunicipio + municipios[i].estado + municipios[i].quantidadeHabitantes + municipios[i].numVagasVereador);
-			}
-			System.out.println();
-
 		}
 		
 		
@@ -99,8 +100,11 @@ public class LerArquivo {
 				String vetorString[] = linha.split(";");
 				urna[i] = new UrnaEletronica (vetorString[0], Integer.parseInt(vetorString[1]), Integer.parseInt(vetorString[2]));
 				aux = aux.prox;
+				
 				if(aux!=null) {
-				linha = aux.objeto.toString();}
+					
+				linha = aux.objeto.toString();
+				}
 			
 	
 			}
@@ -121,10 +125,11 @@ public class LerArquivo {
 				String vetorString[] = linha.split(";");
 				candidatos[i] = new Candidato(vetorString[0], Integer.parseInt(vetorString[1]), vetorString[2], vetorString[3], vetorString[4].charAt(0));
 				aux = aux.prox;
+				
 				if(aux!=null) {
-				linha = aux.objeto.toString();}
-			
-	
+					
+				linha = aux.objeto.toString();
+				}
 			}
 		}
 		
@@ -141,23 +146,12 @@ public class LerArquivo {
 				String vetorString[] = linha.split(";");
 				eleitores[i] = new Eleitor(vetorString[0], Integer.parseInt(vetorString[1]), vetorString[2], Integer.parseInt(vetorString[3]), Integer.parseInt(vetorString[4]));
 				aux = aux.prox;
-				if(aux!=null) {
-				linha = aux.objeto.toString();}
-			
-	
-			}
-			
-			for (int i =0; i<linhasArquivo.getTamanho(); i++) {
 				
-				System.out.println(eleitores[i].nomeEleitor 
-						+ " "+ eleitores[i].tituloEleitor
-						+ " "+ eleitores[i].municipioEleitoral
-						+ " "+ eleitores[i].secaoEleitoral
-						+ " "+ eleitores[i].zonaEleitoral);
-			}
-			System.out.println();
-
-			
+				if(aux!=null) {
+					
+				linha = aux.objeto.toString();
+				}
+			}			
 		}	
 		return null;
 		
