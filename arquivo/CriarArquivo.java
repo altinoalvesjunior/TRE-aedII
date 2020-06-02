@@ -19,15 +19,7 @@ public class CriarArquivo{
 		//Criar arquivo
 		try (BufferedWriter bw = new BufferedWriter(new FileWriter(file, true))){
 			for (int i =0; i<eleitores.length; i++) {
-				bw.write(eleitores[i].getNomeEleitor());
-				bw.write(";");
 				bw.write(eleitores[i].getTituloEleitor());
-				bw.write(";");
-				bw.write(eleitores[i].getMunicipioEleitoral());
-				bw.write(";");
-				bw.write(eleitores[i].getZonaEleitoral());
-				bw.write(";");
-				bw.write(eleitores[i].getSecaoEleitoral());
 				bw.newLine();
 			}
 		}
