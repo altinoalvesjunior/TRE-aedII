@@ -1,6 +1,7 @@
 package moduloTRE;
 
 import java.io.*;
+import java.util.Arrays;
 
 import arquivo.CriarArquivo;
 import arquivo.LerArquivo;
@@ -134,7 +135,7 @@ class MainTRE {
 					
 					case "F": 
 						// TRE opções
-						exportarDados(eleitores,candidatos);
+						exportarDados(eleitores, candidatos, municipios, urnas, partidos);
 						break;
 	
 					}
@@ -155,24 +156,70 @@ class MainTRE {
 
 	}
 	
-	public static void exportarDados(Eleitor[] eleitores, Candidato[] candidatos) {
+	public static void exportarDados(Eleitor[] eleitores, Candidato[] candidatos, Municipio[] municipios, UrnaEletronica[] urnas, PartidoPolitico[] partidos) {
 		
-		System.out.println("Informe o endereco em que o arquivo sera armazenado:");
-		
-		String enderecoPasta = "";
-		
-		try {
+		if(eleitores == null || candidatos == null || municipios == null || urnas == null) {
 			
-			enderecoPasta = br.readLine();
+			System.out.print("Nem todos os arquivos foram cadastrados! Retornando ao menu para cadastrar o restante.");
+		
+		}else {
+						
+			System.out.println("Informe o endereco em que o arquivo sera armazenado:");
 			
-		} catch (IOException e) {
-	
-			e.printStackTrace();
+			String enderecoPastaRaiz = "";
+			
+			try {
+				
+				enderecoPastaRaiz = br.readLine();
+				
+			} catch (IOException e) {
+		
+				e.printStackTrace();
+			}
+			
+			
+			// metodo percorre a lista de municipios para encontrar na lista de urna qual urna seja a desejada e depois verificando o candidato pertecente ao municipio
+			// em conjunto adiciona os eleitores que estao naquela secao
+			for (int j = 0 ; j < municipios.length ; j++) {
+			
+				for (int i = 0 ; i< urnas.length ; i++) {
+					
+					if (municipios[j].getNomeMunicipio().equalsIgnoreCase(urnas[i].getNomeMunicipioUrna())) {
+						
+						String enderecoCompleto = enderecoPastaRaiz.concat("/"+
+								urnas[i].getNomeMunicipioUrna()+
+								"/zona-"+urnas[i].getZonaEleitoralUrna()+
+								"/secao-"+ urnas[i].getSecaoEleitoralUrna());
+						
+						for (int f = 0 ; f < candidatos.length; f++) {
+							
+							if ( candidatos[f].getNomeMunicipioCandidato().equals(urnas[i].getNomeMunicipioUrna())) {
+								
+								Candidato [] candidatoUrna = new Candidato[1];
+								
+								candidatoUrna[0] = candidatos[f];
+								
+								CriarArquivo.criarArquivoCandidato(enderecoCompleto, candidatoUrna);
+							
+							}
+						}
+						
+						for(int f = 0 ; f < eleitores.length; f++) {
+							
+							if( eleitores[f].getSecaoEleitoral() == urnas[i].getSecaoEleitoralUrna()){
+								
+								Eleitor [] eleitorUrna = new Eleitor[1];
+								
+								eleitorUrna[0] = eleitores[f];
+								
+								CriarArquivo.criarArquivoNumeroEleitores(enderecoCompleto, eleitorUrna);
+								
+							}
+						}
+					}
+				}
+			}
 		}
-		
-		CriarArquivo.criarArquivoCandidato(enderecoPasta, candidatos);
-		
-		CriarArquivo.criarArquivoNumeroEleitores(enderecoPasta, eleitores);
 	}
 
 	/**

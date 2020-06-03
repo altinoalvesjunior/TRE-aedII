@@ -12,14 +12,14 @@ public class CriarArquivo{
 	public static void criarArquivoNumeroEleitores(String enderecoPasta, Eleitor[] eleitores) {
 
 		//Criação de Subpasta
-		File file = new File(enderecoPasta + "/saida/eleitores.txt");
+		File file = new File(enderecoPasta + "/urna/eleitores.txt");
 		boolean sucesso = file.getParentFile().mkdirs();
 		System.out.println("Subpasta criada com sucesso: " + sucesso);
 						
-		//Criar arquivo
+		//Criar arquivo e salva os titulos de eleitor da urna
 		try (BufferedWriter bw = new BufferedWriter(new FileWriter(file, true))){
 			for (int i =0; i<eleitores.length; i++) {
-				bw.write(eleitores[i].getTituloEleitor());
+				bw.write(String.valueOf(eleitores[i].getTituloEleitor()));
 				bw.newLine();
 			}
 		}
@@ -31,22 +31,22 @@ public class CriarArquivo{
 	public static void criarArquivoCandidato(String enderecoPasta, Candidato[] candidatos) {
 
 		//Criação de Subpasta
-		File file = new File(enderecoPasta + "/saida/candidatos.txt");
+		File file = new File(enderecoPasta + "/urna/candidatos.txt");
 		boolean sucesso = file.getParentFile().mkdirs();
 		System.out.println("Subpasta criada com sucesso: " + sucesso);
 						
-		//Criar arquivo
+		//Criar arquivo e salvar informacoes do candidato nele
 		try (BufferedWriter bw = new BufferedWriter(new FileWriter(file, true))){
 			for (int i =0; i<candidatos.length; i++) {
-				bw.write(candidatos[i].getNomeCandidato());
+				bw.write(String.valueOf(candidatos[i].getNomeCandidato()));
 				bw.write(";");
-				bw.write(candidatos[i].getNumeroCandidato());
+				bw.write(String.valueOf(candidatos[i].getNumeroCandidato()));
 				bw.write(";");
-				bw.write(candidatos[i].getNomeMunicipioCandidato());
+				bw.write(String.valueOf(candidatos[i].getNomeMunicipioCandidato()));
 				bw.write(";");
-				bw.write(candidatos[i].getSiglaPartido());
+				bw.write(String.valueOf(candidatos[i].getSiglaPartido()));
 				bw.write(";");
-				bw.write(candidatos[i].getCargo());
+				bw.write(String.valueOf(candidatos[i].getCargo()));
 				bw.newLine();
 			}
 		}
