@@ -9,7 +9,7 @@ import moduloTRE.Candidato;
 
 public class CriarArquivo{
 	
-	public static void criarArquivoEleitor(String enderecoPasta, Eleitor[] eleitores) {
+	public static void criarArquivoNumeroEleitores(String enderecoPasta, Eleitor[] eleitores) {
 
 		//Criação de Subpasta
 		File file = new File(enderecoPasta + "/saida/eleitores.txt");

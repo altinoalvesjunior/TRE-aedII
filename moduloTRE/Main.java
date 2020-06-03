@@ -3,6 +3,7 @@ package moduloTRE;
 import moduloUrna.Urna;
 
 class Main {
+	
   public static void main(String[] args) {
 //    Store cadastro;
 //    cadastro = new Store();
@@ -16,8 +17,9 @@ class Main {
 	  
 	  Urna urna = new Urna("/Users/leticiameireles/Desktop/UrnasEletronicas.txt", "/Users/leticiameireles/Desktop/Eleitores.txt", "/Users/leticiameireles/Desktop/Candidato");
 	  
-//	  urna.registroDeQuemVotou(tituloEleitoral);
-//	  urna.verificarExistenciaEleitor(eleitores, tituloEleitoral)
+	  urna.processarVotos(1234);
+	  
+	  System.out.println();
     
   }
 }

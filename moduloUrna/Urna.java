@@ -10,32 +10,28 @@ import moduloTRE.UrnaEletronica;
 
 public class Urna {
 
-	private String nomeMunicipioUrna;
-	private int zonaEleitoralUrna;
-	private int secaoEleitoralUrna;
+	UrnaEletronica urna;
 	Candidato [] candidatos;
 	Eleitor [] eleitores;
+	Lista vereador = new Lista();
+	Lista prefeito = new Lista();
+	Lista quemVotou = new Lista();
 	
 		
 	public Urna(String enderecoUrna, String enderecoEleitores, String enderecoCandidatos) {
 		
-		UrnaEletronica urnaFake = new UrnaEletronica("BH", 130, 15);
-		UrnaEletronica [] urnas = (UrnaEletronica[]) LerArquivo.leituraDosDados(enderecoUrna, urnaFake);
+		UrnaEletronica [] urnas = (UrnaEletronica[]) LerArquivo.leituraDosDados(enderecoUrna, UrnaEletronica.class);
 		UrnaEletronica urna = urnas[1];
-		this.nomeMunicipioUrna = urna.getNomeMunicipioUrna();
-		this.secaoEleitoralUrna = urna.getSecaoEleitoralUrna();
-		this.zonaEleitoralUrna = urna.getZonaEleitoralUrna();
 		
-		Eleitor eleitorFake = new Eleitor("Joao", 123456, "BH", 130, 15);
-		Eleitor [] eleitores = (Eleitor[])LerArquivo.leituraDosDados(enderecoEleitores, eleitorFake);
+		Eleitor [] eleitores = (Eleitor[]) LerArquivo.leituraDosDados(enderecoEleitores, Eleitor.class);
 		
-		Candidato candidatoFake = new Candidato("Joao", 23, "BH", "ABCD", 'P');
-		Candidato [] candidatos = (Candidato[])LerArquivo.leituraDosDados(enderecoCandidatos, candidatoFake);
+		Candidato [] candidatos = (Candidato[]) LerArquivo.leituraDosDados(enderecoCandidatos, Candidato.class);
 		
 		
 		System.out.println("Urna instalada com sucesso!");
 		
 	}
+	
 	
 	public void processarVotos(int tituloEleitoral) {
 		
@@ -56,22 +52,40 @@ public class Urna {
 			}else {
 				
 				Scanner sc = new Scanner (System.in);
-				int opcao = 0;
+				int pref = 0;
 				
 				System.out.println("Digite o numero do candidato para prefeito:");
+				pref = sc.nextInt();
 				
-				opcao = sc.nextInt();
-				
-				switch(opcao) {
-				
-					 
+				for(int i=0; i<candidatos.length; i++) {
+					
+					if(candidatos[i].getNumeroCandidato()==pref) {
+						prefeito.adicionar(candidatos[i]);
+						System.out.println("Voto computado com sucesso!");
+					}
 				}
+			
 				
 				System.out.println("Digite o numero do candidato para vereador:");
-				
+				int vere = 0;
+				vere = sc.nextInt();
+				for(int i=0; i<candidatos.length; i++) {
+					
+					if(candidatos[i].getNumeroCandidato()==vere) {
+						vereador.adicionar(candidatos[i]);
+						System.out.println("Voto computado com sucesso!");
+					}
+				}	
+				registroDeQuemVotou (tituloEleitoral);
+		
+				}
 			}
 		}
-	}
+	
+	
+	
+	
+	
 	
 	public boolean verificarExistenciaEleitor(Eleitor [] eleitores, int tituloEleitoral) {
 		
@@ -86,14 +100,19 @@ public class Urna {
 		return false;
 	}
 	
-	Lista quemVotou = new Lista();
+	
+	
+	
 	
 	public void registroDeQuemVotou (int tituloEleitoral) {
 		
 		quemVotou.adicionar(tituloEleitoral);
 	}
 	
-	private boolean verificarSeVotou(int tituloEleitoral) {
+	
+	
+	
+	public boolean verificarSeVotou(int tituloEleitoral) {
 		
 		Object resultado = quemVotou.buscarObjeto(tituloEleitoral);
 		
