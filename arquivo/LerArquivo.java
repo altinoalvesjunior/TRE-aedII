@@ -184,8 +184,8 @@ public class LerArquivo {
 
 			for(int i=0; i<linhasArquivo.getTamanho(); i++) {
 
-				String[] vetorInt = linha.split(";");
-				resultado[i] = new Resultados(vetorInt[0],vetorInt[1]);
+				String[] vetorString = linha.split(";");
+				resultado[i] = new Resultados(Integer.parseInt(vetorString[0]),Integer.parseInt(vetorString[1]));
 				linha = aux.prox.objeto.toString();
 			}
 			return resultado;
