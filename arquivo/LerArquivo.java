@@ -8,6 +8,7 @@ import moduloTRE.Eleitor;
 import moduloTRE.Municipio;
 import moduloTRE.PartidoPolitico;
 import moduloTRE.UrnaEletronica;
+import moduloUrna.TituloEleitor;
 
 public class LerArquivo {
 
@@ -25,8 +26,9 @@ public class LerArquivo {
 		while(br.ready()){
 
 			linha = br.readLine();
-
-			linhasArquivo.adicionar(linha);
+			
+			if(!linha.isBlank())
+				linhasArquivo.adicionar(linha);
 
 		}
 
@@ -150,6 +152,27 @@ public class LerArquivo {
 			}
 			return eleitores;
 		}	
+		
+		if(cls.getName().equals(TituloEleitor.class.getName())) {
+
+			TituloEleitor [] titulos = new TituloEleitor[linhasArquivo.getTamanho()];
+
+			Celula aux = linhasArquivo.inicio;
+			String linha = aux.objeto.toString();
+
+			for(int i=0; i<linhasArquivo.getTamanho(); i++) {
+
+				titulos[i] = new TituloEleitor(Integer.parseInt(linha));
+				aux = aux.prox;
+
+				if(aux!=null) {
+
+					linha = aux.objeto.toString();
+				}
+			}
+			return titulos;
+		}	
+		
 		return null;
 
 	}
