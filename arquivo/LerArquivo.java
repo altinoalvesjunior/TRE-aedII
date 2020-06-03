@@ -64,6 +64,7 @@ public class LerArquivo {
 				partidosPoliticos[i] = new PartidoPolitico(vetorString[0],vetorString[1]);
 				linha = aux.prox.objeto.toString();
 			}
+			return partidosPoliticos;
 		}
 	
 	
@@ -85,6 +86,7 @@ public class LerArquivo {
 				linha = aux.objeto.toString();
 				}
 			}
+			return municipios;
 		}
 		
 		
@@ -104,11 +106,10 @@ public class LerArquivo {
 				if(aux!=null) {
 					
 				linha = aux.objeto.toString();
+				
 				}
-			
-	
 			}
-
+			return urna;
 
 		}
 		
@@ -131,6 +132,7 @@ public class LerArquivo {
 				linha = aux.objeto.toString();
 				}
 			}
+			return candidatos;
 		}
 		
 		
@@ -151,7 +153,8 @@ public class LerArquivo {
 					
 				linha = aux.objeto.toString();
 				}
-			}			
+			}
+			return eleitores;
 		}	
 		return null;
 		
