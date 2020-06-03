@@ -27,8 +27,12 @@ public class Resultados {
 		this.quantidadeVotos = quantidadeVotos;
 	}
 	
-	public static Object importarDadosUrna(String caminho1, String caminho2, Class<?> cls, Class1<?> cls1) {
-		Class = (Class[]) LerArquivo.leituraDosDados(caminho1, Class.class);
-		prefeitos = (Prefeito[]) LerArquivo.leituraDosDados(caminho2, Prefeito.class);
+	public static int importarDadosCandidatos(String caminho1) {
+		prefeitos = (Prefeito[]) LerArquivo.leituraDosDados(caminho2, Resultados.class);
 	}
+	
+	public static Object importarDadosVotosJustificados(String caminho1, String caminho2) {
+		prefeitos = (Prefeito[]) LerArquivo.leituraDosDados(caminho2, Resultados.class);
+	}
+	
 }
