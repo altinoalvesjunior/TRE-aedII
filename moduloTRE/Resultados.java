@@ -1,50 +1,33 @@
 package moduloTRE;
 
+import java.io.IOException;
+
 import arquivo.LerArquivo;
 import arquivo.Lista;
 
 public class Resultados {
+		
+	private static Lista linhasArquivos = new Lista();
 	
-	int numeroCandidato;
-	int quantidadeVotos;
-	
-	public Resultados(int numeroCandidato, int quantidadeVotos) {
-		this.numeroCandidato = numeroCandidato;
-		this.quantidadeVotos = quantidadeVotos;
-	}
+	//Metodo responsavel por ler os dados dos resultados dos candidatos das urnas
+	public static Resultado[] importarDadosCandidatos(String caminho) {
 
-	public int getNumeroCandidato() {
-		return numeroCandidato;
-	}
-	
-	public void setNumeroCandidato(int numeroCandidato) {
-		this.numeroCandidato = numeroCandidato;
-	}
-	
-	public int getQuantidadeVotos() {
-		return quantidadeVotos;
-	}
-	
-	public void setQuantidadeVotos(int quantidadeVotos) {
-		this.quantidadeVotos = quantidadeVotos;
-	}
-	
-	String [] vereadores;
-	static Lista linhasArquivos = new Lista();
-	
-	public static int importarDadosCandidatos(String caminho) {
-
-		linhasArquivos = LerArquivo.lerLinhasArquivo(caminho);
-		String [] candidatos = new String[linhasArquivos.getTamanho()];
-		Celula aux = linhasArquivos.inicio;
-		String linha = aux.objeto.toString();
-
-		for(int i=0; i < linhasArquivos.getTamanho(); i++) {
-
-			String vetorString[] = linha.split(";");
-			candidatos[i] = new String (vetorString[0] + ":" +vetorString[1]);
-			linha = aux.prox.objeto.toString();
+		try {
+			linhasArquivos = LerArquivo.lerLinhasArquivo(caminho);
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-		return candidatos;
+		
+		Resultado [] resultados = new Resultado[linhasArquivos.getTamanho()];
+		
+		for(int i=0; i < linhasArquivos.getTamanho(); i++) {
+			
+			String linha = (String) linhasArquivos.getObjeto(i);
+			String vetorString[] = linha.split(";");
+			
+			resultados[i] = new Resultado (vetorString[0],Integer.valueOf(vetorString[1]));
+		}
+		
+		return resultados;
 	}
 }

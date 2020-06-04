@@ -1,12 +1,9 @@
 package moduloUrna;
 
 import java.io.*;
-import java.util.Arrays;
 
-import arquivo.CriarArquivo;
 import arquivo.LerArquivo;
 import moduloTRE.Candidato;
-import moduloTRE.Eleitor;
 
 class MainUrna {
 
