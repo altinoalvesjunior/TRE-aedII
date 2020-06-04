@@ -1,8 +1,10 @@
 package moduloTRE;
 
 import arquivo.LerArquivo;
+import arquivo.Lista;
 
 public class Resultados {
+	
 	int numeroCandidato;
 	int quantidadeVotos;
 	
@@ -27,12 +29,22 @@ public class Resultados {
 		this.quantidadeVotos = quantidadeVotos;
 	}
 	
-	public static int importarDadosCandidatos(String caminho1) {
-		prefeitos = (Prefeito[]) LerArquivo.leituraDosDados(caminho2, Resultados.class);
-	}
+	String [] vereadores;
+	static Lista linhasArquivos = new Lista();
 	
-	public static Object importarDadosVotosJustificados(String caminho1, String caminho2) {
-		prefeitos = (Prefeito[]) LerArquivo.leituraDosDados(caminho2, Resultados.class);
+	public static int importarDadosCandidatos(String caminho) {
+
+		linhasArquivos = LerArquivo.lerLinhasArquivo(caminho);
+		String [] candidatos = new String[linhasArquivos.getTamanho()];
+		Celula aux = linhasArquivos.inicio;
+		String linha = aux.objeto.toString();
+
+		for(int i=0; i < linhasArquivos.getTamanho(); i++) {
+
+			String vetorString[] = linha.split(";");
+			candidatos[i] = new String (vetorString[0] + ":" +vetorString[1]);
+			linha = aux.prox.objeto.toString();
+		}
+		return candidatos;
 	}
-	
 }
