@@ -9,7 +9,6 @@ import java.util.Scanner;
 import arquivo.CriarArquivo;
 import arquivo.Lista;
 import moduloTRE.Candidato;
-import moduloTRE.Eleitor;
 import moduloTRE.UrnaEletronica;
 
 public class Urna {
@@ -94,6 +93,8 @@ public class Urna {
 				resultadoVereadores.adicionar(candidatos[i]);
 			}
 		}	
+		
+		sc.close();
 		
 		System.out.println("Votos computados!");
 		registroDeQuemVotou (tituloEleitoral);

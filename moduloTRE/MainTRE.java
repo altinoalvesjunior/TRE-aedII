@@ -1,7 +1,6 @@
 package moduloTRE;
 
 import java.io.*;
-import java.util.Arrays;
 
 import arquivo.CriarArquivo;
 import arquivo.LerArquivo;
