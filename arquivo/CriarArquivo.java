@@ -103,9 +103,9 @@ public class CriarArquivo{
 						
 		//Criar arquivo e salvar informacoes do candidato nele
 		try (BufferedWriter bw = new BufferedWriter(new FileWriter(file, true))){
-			bw.write("VotosTotais:"+String.valueOf(votosTotais));
+			bw.write("votosTotais;"+String.valueOf(votosTotais));
 			bw.newLine();
-			bw.write("VotosJustificados"+String.valueOf(justificados));
+			bw.write("votosJustificados;"+String.valueOf(justificados));
 		}
 		catch(IOException excecao) {
 			excecao.printStackTrace();
