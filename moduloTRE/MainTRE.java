@@ -4,11 +4,20 @@ import java.io.*;
 
 import arquivo.CriarArquivo;
 import arquivo.LerArquivo;
+import arquivo.Lista;
 
 class MainTRE {
 
 
 	private static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	
+	private static Eleitor [] eleitores;
+	private static Candidato[] candidatos;
+	private static Municipio [] municipios;
+	private static PartidoPolitico [] partidos;
+	private static UrnaEletronica [] urnas;
+	private static Lista resultadoGeralPrefeitos = new Lista();
+	private static Lista resultadoGeralVereadores = new Lista();
 
 	/**
 	 * @public
@@ -22,7 +31,6 @@ class MainTRE {
 			
 			System.out.println("Escolha uma etapa: ");
 			System.out.println("1 - Antes das eleições – Preparação");
-			System.out.println("2 - Durante as eleições");
 			System.out.println("3 - Depois das eleições – Divulgação dos resultados");
 			System.out.println("Digite o número da etapa ou -1 para sair: ");
 			
@@ -69,11 +77,11 @@ class MainTRE {
 		
 		//Inicializa a primeira etapa do TRE onde sao lidos os arquivos
 
-		Eleitor [] eleitores = null;
-		Candidato[] candidatos = null;
-		Municipio [] municipios = null;
-		PartidoPolitico [] partidos = null;
-		UrnaEletronica [] urnas = null;
+		eleitores = null;
+		candidatos = null;
+		municipios = null;
+		partidos = null;
+		urnas = null;
 
 		String endereco, opcao = "";
 		
@@ -240,7 +248,8 @@ class MainTRE {
 
 			case "A": 
 				// TRE opções
-				etapa1TRE();
+				System.out.println();
+				etapaImportarResultados();
 				break;
 			case "B": 
 				// TRE opções
@@ -259,6 +268,63 @@ class MainTRE {
 			e.printStackTrace();
 		}
 
+	}
+
+	private static void etapaImportarResultados() {
+		
+		System.out.println("Informe o endereço do arquivo da urna desejada");
+		String caminho;
+		Resultado [] resultados;
+		Lista listaResultados = new Lista();
+		
+		try {
+			
+			caminho = br.readLine();
+			resultados = Resultados.importarDadosCandidatos(caminho);
+			
+			for (int i = 0 ; i < resultados.length ; i++) {
+				listaResultados.adicionar(resultados[i]);
+			}
+			
+			for (int i = 0 ; i < listaResultados.getTamanho() ; i++) {
+				
+				Resultado resultado = (Resultado)listaResultados.getObjeto(i);
+				
+				for (int j = 0 ; j < candidatos.length ; j++) {
+					
+					if (resultado.getIdCandidato().equals(String.valueOf(candidatos[j].getNumeroCandidato()))) {
+						
+						if ( candidatos[j].getCargo() == 'P') {
+							
+							Resultado geral = (Resultado)resultadoGeralPrefeitos.buscarObjeto(resultado.getIdCandidato());
+							
+							if (geral != null) {
+								
+								geral = new Resultado(geral.getIdCandidato(), geral.getResultado() + resultado.getResultado());
+								
+							}else {
+								resultadoGeralPrefeitos.adicionar(resultado);
+							}
+							
+						}else {
+							
+							Resultado geral = (Resultado)resultadoGeralVereadores.buscarObjeto(resultado.getIdCandidato());
+							
+							if (geral != null) {
+								
+								geral = new Resultado(geral.getIdCandidato(), geral.getResultado() + resultado.getResultado());
+								
+							}else {
+								resultadoGeralVereadores.adicionar(resultado);
+							}
+							
+						}
+					}
+				}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
