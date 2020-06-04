@@ -1,5 +1,7 @@
 package arquivo;
 
+/*Célula da TAD Lista*/
+
 public class Celula {
 	
 	Celula prox;

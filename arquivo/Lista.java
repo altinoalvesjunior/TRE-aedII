@@ -2,141 +2,140 @@ package arquivo;
 
 import moduloUrna.Resultado;
 
-public class Lista{
-	
+//Motivo para utilização da lista: A inserção ou remoção de um elemento na 
+//lista não implica a mudança de lugar de outros elementos; 
+//Não é necessário definir, no momento da criação da lista, o número máximo 
+//de elementos que esta poderá ter. Ou seja, é possível alocar memória "dinamicamente", 
+//apenas para o número de nós necessários.
+
+public class Lista {
+
 	Celula inicio;
-	
-	//Metodo adicionar()
-	//Possui a funcao de iniciar e adicionar elementos na lista
-	//A lista serve para armazenar as linhas do arquivo para pesquisa e impressao
+
+	// Metodo adicionar()
+	// Possui a funcao de iniciar e adicionar elementos na lista
+	// A lista serve para armazenar as linhas do arquivo para pesquisa e impressao
 	public void adicionar(Object objeto) {
-		
+
 		Celula aux = inicio;
-		
-		if (aux==null) {
-			
+
+		if (aux == null) {
+
 			inicio = new Celula(objeto);
-			
-			
+
 		} else {
-			
-			while(aux.prox!=null) {
-				
+
+			while (aux.prox != null) {
+
 				aux = aux.prox;
 			}
 
 			aux.prox = new Celula(objeto);
-			
+
 		}
 	}
-	
-	//Metodo toString()
-	//Transforma o objeto armazenado na lista em string para impressao
+
+	// Metodo toString()
+	// Transforma o objeto armazenado na lista em string para impressao
 	@Override
 	public String toString() {
-		
+
 		String result = "";
 		Celula aux = inicio;
-		
-		while(aux!=null) {
-			
+
+		while (aux != null) {
+
 			result = result + aux.objeto.toString() + System.lineSeparator();
-			
+
 			aux = aux.prox;
 		}
-		
+
 		return result;
 	}
-	
-	
-	//Metodo de busca de objetos dentro da lista e verificacao de existencia
-	
+
+	// Metodo de busca de objetos dentro da lista e verificacao de existencia
+
 	public Object buscarObjeto(Object objeto) {
-		
+
 		Celula aux = inicio;
-		
-		if(aux == null) {
+
+		if (aux == null) {
 			return null;
 		}
-		
+
 		do {
-			
-			if(aux.objeto.equals(objeto)) {
-				
+
+			if (aux.objeto.equals(objeto)) {
+
 				return aux.objeto;
-				
+
 			} else {
-				
+
 				aux = aux.prox;
 			}
-			
-		}while(aux != null);
-		
+
+		} while (aux != null);
+
 		return null;
 
 	}
-	
+
 	public Object buscarObjeto(String id) {
-		
+
 		Celula aux = inicio;
-		
-		if(aux == null) {
+
+		if (aux == null) {
 			return null;
 		}
-		
+
 		do {
-			Resultado atual = (Resultado)aux.objeto;
-			if(id.equals(atual.getIdCandidato()) ) {
-				
+			Resultado atual = (Resultado) aux.objeto;
+			if (id.equals(atual.getIdCandidato())) {
+
 				return aux.objeto;
-				
+
 			} else {
-				
+
 				aux = aux.prox;
 			}
-			
-		}while(aux != null);
-		
+
+		} while (aux != null);
+
 		return null;
 
 	}
 
-
-	
 	public int getTamanho() {
-		
-		int i=0;
+
+		int i = 0;
 		Celula aux = inicio;
-		
-		//VERIFICAR SE IRA FUNCIONAR
-		while(aux!=null) {
-			
+
+		// VERIFICAR SE IRA FUNCIONAR
+		while (aux != null) {
+
 			i++;
 			aux = aux.prox;
 		}
 		return i;
-		
+
 	}
-	
-	//Metodo para imprimir a lista inteira
+
+	// Metodo para imprimir a lista inteira
 	public void imprimirListaInteira() {
-		
+
 		System.out.println(toString());
 	}
-	
+
 	public Object getObjeto(int pos) {
-		
+
 		Celula aux = inicio;
 		int i = 0;
-		
-		//VERIFICAR SE IRA FUNCIONAR
-		while(i < pos){
+
+		while (i < pos) {
 			aux = aux.prox;
 			i++;
 		}
 		return aux.objeto;
 	}
-	
-	
 
 }

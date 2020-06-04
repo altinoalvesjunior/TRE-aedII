@@ -228,6 +228,38 @@ class MainTRE {
 			}
 		}
 	}
+	
+	/**
+	 * @public
+	 * Retornar prefeitos eleitos
+	 */
+//	public static void listarPrefeitosEleitos() {
+//		ListaCandidatos lista = new Resultados().importarDadosCandidatos();
+//		int todosVotos = 0;
+//		int primeiro = 0;
+//		int segundo = 0;
+//		
+//		 for (String s : lista) {
+//		      String[] wrapper = s.split(";");
+//		      int num = Integer.parseInt(wrapper[0]);
+//		      int votos = Integer.parseInt(wrapper[1]);
+//		      
+//		      if(primeiro > votos) {
+//		    	  primeiro = votos;
+//		      }
+//		      if(segundo > votos && segundo < votos) {
+//		    	  segundo = votos;
+//		      }
+//		}
+//		int porcentagem = (primeiro / segundo) * 100;
+//		 
+//		if(porcentagem > 50) {
+//			System.out.println("O primeiro prefeito ganhou com: " + primeiro + "votos");
+//			
+//		}  else {
+//			System.out.println("O segundo turno irá ser entre...");
+//		}
+//	}
 
 	/**
 	 * @public
@@ -252,7 +284,6 @@ class MainTRE {
 				etapaImportarResultados();
 				break;
 			case "B": 
-				// TRE opções
 				// Chamar método
 				break;
 			case "C": 

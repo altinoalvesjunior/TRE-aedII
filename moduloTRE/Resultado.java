@@ -2,9 +2,11 @@ package moduloTRE;
 
 public class Resultado {
 	
+	//Atributos da Classe
 	private String idCandidato;
 	private int resultado;
 	
+	//Construtores da Classe
 	public Resultado(String idCandidato) {
 		this.idCandidato = idCandidato;
 		this.resultado = 0;
@@ -15,6 +17,7 @@ public class Resultado {
 		this.resultado = resultado;
 	}
 	
+	//Getters e Setters
 	public String getIdCandidato() {
 		return idCandidato;
 	}
