@@ -15,7 +15,4 @@ public class TituloEleitor {
 	public void setTitulo(int titulo) {
 		this.titulo = titulo;
 	}
-	
-	
-
 }
