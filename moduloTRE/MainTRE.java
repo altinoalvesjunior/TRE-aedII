@@ -290,7 +290,7 @@ public class MainTRE {
 				
 				}else {
 					
-					System.out.println("O segundo turno irá ser entre os candidatos de numero" + primeiro.getIdCandidato() + " e " + segundo.getIdCandidato());
+					System.out.println("O segundo turno irá ser entre os candidatos de numero " + primeiro.getIdCandidato() + " e " + segundo.getIdCandidato());
 				}
 				
 			}
@@ -363,7 +363,7 @@ public class MainTRE {
 				if (porcentagem > 50) {
 					System.out.println("O vereador, de numero " + primeiro.getIdCandidato() +  ", ganhou com: " + primeiro.getResultado() + " votos");
 				}else {
-					System.out.println("O segundo turno irá ser entre os candidatos de numero" + primeiro.getIdCandidato() + " e " + segundo.getIdCandidato());
+					System.out.println("O segundo turno irá ser entre os candidatos de numero " + primeiro.getIdCandidato() + " e " + segundo.getIdCandidato());
 				}
 				
 			}
@@ -425,7 +425,7 @@ public class MainTRE {
 	
 	private static void etapaImportarResultados() {
 
-		System.out.println("Informe o endereço do arquivo da urna desejada");
+		System.out.println("Informe o endereço do arquivo resultado.txt da urna desejada");
 		String caminho;
 		Resultado [] resultados;
 

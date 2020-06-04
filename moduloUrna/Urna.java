@@ -97,9 +97,7 @@ public class Urna {
 				resultadoVereadores.adicionar(candidatos[i]);
 			}
 		}	
-		
-		sc.close();
-		
+				
 		System.out.println("Votos computados!");
 		registroDeQuemVotou (tituloEleitoral);
 
