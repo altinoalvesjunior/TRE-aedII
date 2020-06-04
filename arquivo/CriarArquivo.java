@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import moduloTRE.Eleitor;
+import moduloUrna.Resultado;
 import moduloTRE.Candidato;
 
 public class CriarArquivo{
@@ -54,6 +55,34 @@ public class CriarArquivo{
 			excecao.printStackTrace();
 		}
 	}
+	
+	public static void criarArquivoResultadoCandidato(String enderecoPasta, Lista resultados) {
+
+		String [] endereco = enderecoPasta.split("/");
+		
+		enderecoPasta.replace(endereco[endereco.length-1], "");
+		
+		//Criação de Subpasta
+		File file = new File(enderecoPasta + "resultado.txt");
+		boolean sucesso = file.getParentFile().mkdirs();
+		System.out.println("Subpasta criada com sucesso: " + sucesso);
+						
+		//Criar arquivo e salvar informacoes do candidato nele
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter(file, true))){
+			for (int i =0; i<resultados.getTamanho(); i++) {
+				Resultado resultado = (Resultado)resultados.getObjeto(i);
+				bw.write(String.valueOf((resultado.getIdCandidato())));
+				bw.write(";");
+				bw.write(String.valueOf((resultado.getResultado())));
+				bw.newLine();
+			}
+		}
+		catch(IOException excecao) {
+			excecao.printStackTrace();
+		}
+	}
+	
+	
 	
 	/*public static void criarArquivo(String enderecoPasta, String nomeArquivo, Objeto[] objetos) {
 

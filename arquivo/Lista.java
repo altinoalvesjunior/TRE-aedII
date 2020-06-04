@@ -1,5 +1,7 @@
 package arquivo;
 
+import moduloUrna.Resultado;
+
 public class Lista{
 	
 	Celula inicio;
@@ -53,17 +55,53 @@ public class Lista{
 		
 		Celula aux = inicio;
 		
-		if(aux.objeto == objeto) {
-			
-			return aux.objeto;
-			
-		} else {
-			
-			aux = aux.prox;
+		if(aux == null) {
+			return null;
 		}
 		
+		do {
+			
+			if(aux.objeto.equals(objeto)) {
+				
+				return aux.objeto;
+				
+			} else {
+				
+				aux = aux.prox;
+			}
+			
+		}while(aux != null);
+		
 		return null;
+
 	}
+	
+	public Object buscarObjeto(String id) {
+		
+		Celula aux = inicio;
+		
+		if(aux == null) {
+			return null;
+		}
+		
+		do {
+			Resultado atual = (Resultado)aux.objeto;
+			if(id.equals(atual.getIdCandidato()) ) {
+				
+				return aux.objeto;
+				
+			} else {
+				
+				aux = aux.prox;
+			}
+			
+		}while(aux != null);
+		
+		return null;
+
+	}
+
+
 	
 	public int getTamanho() {
 		
@@ -86,6 +124,18 @@ public class Lista{
 		System.out.println(toString());
 	}
 	
+	public Object getObjeto(int pos) {
+		
+		Celula aux = inicio;
+		int i = 0;
+		
+		//VERIFICAR SE IRA FUNCIONAR
+		while(i < pos){
+			aux = aux.prox;
+			i++;
+		}
+		return aux.objeto;
+	}
 	
 	
 
