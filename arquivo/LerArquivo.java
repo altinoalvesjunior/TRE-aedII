@@ -19,6 +19,7 @@ public class LerArquivo {
 	 */
 	public static Lista lerLinhasArquivo(String caminhoDoArquivo) throws IOException {
 
+		/*Criação de uma nota lista em que receberá cada linha do arquivo em cada Célula*/
 		Lista linhasArquivo = new Lista();
 		String linha;
 
