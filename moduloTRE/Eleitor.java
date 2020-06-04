@@ -2,12 +2,14 @@ package moduloTRE;
 
 public class Eleitor {
 
+	//Atributos que compõe a classe
 	private String nomeEleitor;
 	private int tituloEleitor;
 	private String municipioEleitoral;
 	private int zonaEleitoral;
 	private int secaoEleitoral;
 	
+	//Construtor da Classe
 	public Eleitor(String nomeEleitor, int tituloEleitor, String municipioEleitoral, int zonaEleitoral,
 			int secaoEleitoral) {
 		this.nomeEleitor = nomeEleitor;
@@ -17,6 +19,7 @@ public class Eleitor {
 		this.secaoEleitoral = secaoEleitoral;
 	}
 	
+	//Getters e Setters da Classe
 	public String getNomeEleitor() {
 		return nomeEleitor;
 	}

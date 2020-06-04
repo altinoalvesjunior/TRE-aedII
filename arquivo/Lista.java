@@ -6,7 +6,8 @@ import moduloUrna.Resultado;
 //lista não implica a mudança de lugar de outros elementos; 
 //Não é necessário definir, no momento da criação da lista, o número máximo 
 //de elementos que esta poderá ter. Ou seja, é possível alocar memória "dinamicamente", 
-//apenas para o número de nós necessários
+//apenas para o número de nós necessários.
+
 public class Lista {
 
 	Celula inicio;

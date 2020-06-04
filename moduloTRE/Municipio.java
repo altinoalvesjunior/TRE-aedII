@@ -2,11 +2,13 @@ package moduloTRE;
 
 public class Municipio {
 	
+	//Atributos da Classe
 	private String nomeMunicipio;
 	private String estado;
 	private int quantidadeHabitantes;
 	private int numVagasVereador;
 	
+	//Construtor da Classe
 	public Municipio(String nomeMunicipio, String estado, int quantidadeHabitantes, int numVagasVereador) {
 		this.nomeMunicipio = nomeMunicipio;
 		this.estado = estado;
@@ -14,6 +16,7 @@ public class Municipio {
 		this.numVagasVereador = numVagasVereador;
 	}
 	
+	//Getters e Setters da Classe
 	public Municipio(String nomeMunicipio, String estado) {
 		this.nomeMunicipio = nomeMunicipio;
 		this.estado = estado;
