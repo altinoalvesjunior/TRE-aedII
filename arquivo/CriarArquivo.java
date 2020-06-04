@@ -56,11 +56,11 @@ public class CriarArquivo{
 		}
 	}
 	
-	public static void criarArquivoResultadoCandidato(String enderecoPasta, Lista resultados) {
+	public static String criarArquivoResultadoCandidato(String enderecoPasta, Lista resultados) {
 
 		String [] endereco = enderecoPasta.split("/");
 		
-		enderecoPasta.replace(endereco[endereco.length-1], "");
+		enderecoPasta = enderecoPasta.replace(endereco[endereco.length-1], "");
 		
 		//Criação de Subpasta
 		File file = new File(enderecoPasta + "resultado.txt");
@@ -80,8 +80,38 @@ public class CriarArquivo{
 		catch(IOException excecao) {
 			excecao.printStackTrace();
 		}
+		try {
+			return file.getCanonicalPath();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
+	
+	public static String criarArquivoInformacoes(String enderecoPasta, int votosTotais, int justificados) throws IOException {
+
+		String [] endereco = enderecoPasta.split("/");
+		
+		enderecoPasta = enderecoPasta.replace(endereco[endereco.length-1], "");
+		
+		//Criação de Subpasta
+		File file = new File(enderecoPasta + "informacoes.txt");
+		boolean sucesso = file.getParentFile().mkdirs();
+		System.out.println("Subpasta criada com sucesso: " + sucesso);
+						
+		//Criar arquivo e salvar informacoes do candidato nele
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter(file, true))){
+			bw.write("VotosTotais:"+String.valueOf(votosTotais));
+			bw.newLine();
+			bw.write("VotosJustificados"+String.valueOf(justificados));
+		}
+		catch(IOException excecao) {
+			excecao.printStackTrace();
+		}
+		return file.getCanonicalPath();
+	}
 	
 	
 	/*public static void criarArquivo(String enderecoPasta, String nomeArquivo, Objeto[] objetos) {
