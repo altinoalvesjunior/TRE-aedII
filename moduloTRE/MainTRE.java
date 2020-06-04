@@ -407,10 +407,12 @@ public class MainTRE {
 					break;
 				
 				case "B": 
+					System.out.println();
 					listarPrefeitosEleitos();
 					break;
 				
 				case "C": 
+					System.out.println();
 					listarVereadoresEleitos();
 					break;
 				}
