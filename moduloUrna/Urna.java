@@ -9,6 +9,7 @@ import java.util.Scanner;
 import arquivo.CriarArquivo;
 import arquivo.Lista;
 import moduloTRE.Candidato;
+import moduloTRE.Resultado;
 import moduloTRE.UrnaEletronica;
 
 public class Urna {

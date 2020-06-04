@@ -2,8 +2,7 @@ package moduloTRE;
 
 import java.io.IOException;
 
-import arquivo.LerArquivo;
-import arquivo.Lista;
+import arquivo.*;
 
 public class Resultados {
 		

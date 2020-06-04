@@ -1,0 +1,3 @@
+Goiania;141;33
+Belo Horizonte;5678;12
+Belo Horizonte;1234;13

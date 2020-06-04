@@ -1,6 +1,7 @@
 package arquivo;
 
-import moduloUrna.Resultado;
+
+import moduloTRE.Resultado;
 
 //Motivo para utilização da lista: A inserção ou remoção de um elemento na 
 //lista não implica a mudança de lugar de outros elementos; 

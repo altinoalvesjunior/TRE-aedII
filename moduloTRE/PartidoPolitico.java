@@ -1,5 +1,6 @@
 package moduloTRE;
 
+
 public class PartidoPolitico {
 	
 	//Atributos da Classe

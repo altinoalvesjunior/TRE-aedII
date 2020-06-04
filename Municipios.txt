@@ -1,0 +1,2 @@
+Belo Horizonte;Minas Gerais;15000000;100
+Goiania;Goias;15000000;100
