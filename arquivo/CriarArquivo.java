@@ -1,12 +1,13 @@
 package arquivo;
 
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
 import moduloTRE.Eleitor;
-import moduloUrna.Resultado;
+import moduloTRE.Resultado;
 import moduloTRE.Candidato;
 
 public class CriarArquivo {

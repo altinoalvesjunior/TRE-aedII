@@ -32,5 +32,9 @@ public class Resultado {
 	public void adicionarVoto() {
 		this.resultado++;
 	}
+	
+	public void adicionarVoto(int adicionar) {
+		this.resultado= resultado+adicionar;
+	}
 
 }

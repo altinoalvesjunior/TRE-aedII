@@ -1,4 +1,6 @@
-Jose;34;Belo Horizonte;NUNJ;P
-Joan;35;Betim;JUV;P
-Pedro ferreira;33;Buritis;HBK;V
-Anita;56;Goiania;HJN;P
+Jose1;34;Belo Horizonte;NUNJ;P
+Joan2;35;Belo Horizonte;JUV;P
+Pedro ferreira1;33;Belo Horizonte;HBK;V
+Pedro ferreira2;36;Belo Horizonte;HBK;V
+Pedro ferreira3;37;Belo Horizonte;HBK;V
+Anita;56;Belo Horizonte;HJN;P

@@ -231,110 +231,208 @@ public class MainTRE {
 			}
 		}
 	}
-
+	
 	/**
 	 * @public
-	 * Retornar prefeitos eleitos
+	 * Listar prefeitos eleitos
 	 */
 	public static void listarPrefeitosEleitos() {
 
 		int todosVotos = 0;
 		
-		Resultado primeiro = (Resultado) resultadoGeralPrefeitos.getObjeto(0);
-		Resultado aux, segundo = new Resultado("",0);
-
-		for (int i = 1 ; i < resultadoGeralPrefeitos.getTamanho() ; i++) {
+		try {
+			Resultado primeiro = (Resultado) resultadoGeralPrefeitos.getObjeto(0);
+			Resultado aux, segundo = new Resultado("",0);
+			todosVotos = primeiro.getResultado();
 			
-			aux = (Resultado) resultadoGeralPrefeitos.getObjeto(i);
-			
-			if (primeiro.getResultado() < aux.getResultado()) {
-				segundo = primeiro;
-				primeiro = aux;
+			//descobre quem tem a quantidade maior de votos atraves de um auxiliar, comecando ja do segundo
+			for (int i = 1 ; i < resultadoGeralPrefeitos.getTamanho() ; i++) {
+				
+				aux = (Resultado) resultadoGeralPrefeitos.getObjeto(i);
+				
+				todosVotos = todosVotos + aux.getResultado();
+				
+				if (primeiro.getResultado() < aux.getResultado()) {
+					segundo = primeiro;
+					primeiro = aux;
+				}else {
+					if(segundo.getResultado()<aux.getResultado()) {
+						segundo = aux;
+					}
+				}
+				
 			}
 			
+			int eleitoresMunicipio = 0;
+			
+			//procura os municipios cujo candidato seja o mesmo para saber qual a quantidade de habitantes presente no municipio
+			for (int i = 0 ; i < municipios.length ; i++) {
+				for (int j = 0 ; j < candidatos.length ; j++) {
+					if (primeiro.getIdCandidato().equals(String.valueOf(candidatos[j].getNumeroCandidato()))) {
+						if (municipios[i].getNomeMunicipio().equals(candidatos[j].getNomeMunicipioCandidato())) {
+							eleitoresMunicipio = municipios[i].getQuantidadeHabitantes();
+							break;
+						}
+					}
+				}
+			}
+			
+			
+			
+			// verifica se a quantidade de eleitores do municipio for menor que 200000, se for nao precisa verificar a porcentagem
+			if(eleitoresMunicipio < 200_000) {
+				
+				System.out.println("O prefeito, de numero " + primeiro.getIdCandidato() +  ", ganhou com: " + primeiro.getResultado() + " votos");
+			
+			}else {
+				
+				//calcula a porcentagem em int entre 0 e 100 convertendo de float para fazer a divisao corretamente
+				int porcentagem = (int) (((float)primeiro.getResultado() / todosVotos) * 100);
+				
+				if (porcentagem > 50) {
+					
+					System.out.println("O prefeito, de numero " + primeiro.getIdCandidato() +  ", ganhou com: " + primeiro.getResultado() + " votos");
+				
+				}else {
+					
+					System.out.println("O segundo turno irá ser entre os candidatos de numero" + primeiro.getIdCandidato() + " e " + segundo.getIdCandidato());
+				}
+				
+			}
+		}catch(NullPointerException e) {
+			System.out.println("Nao eh possivel calcular prefeito eleito!");
+			System.out.println("Razao: Nenhum valor para prefeito foi computado. ");
+			System.out.println("Nenhuma urna foi importada ou arquivos como candidatos e municipios nao foram carregados na etapa 1 do modulo do TRE.");
+
 		}
-		int porcentagem = (primeiro.getResultado() / segundo.getResultado()) * 100;
+		
+	}
+	
+	
+	/**
+	 * @public
+	 * Listar vereadores eleitos
+	 */
+	public static void listarVereadoresEleitos() {
 
-		if(porcentagem > 50) {
-			System.out.println("O primeiro prefeito, de numero" + primeiro.getIdCandidato() +  ", ganhou com: " + primeiro.getResultado() + "votos");
+		int todosVotos = 0;
+		try {
+			Resultado primeiro = (Resultado) resultadoGeralVereadores.getObjeto(0);
+			Resultado aux, segundo = new Resultado("",0);
+			todosVotos = primeiro.getResultado();
+	
+			//descobre quem tem a quantidade maior de votos atraves de um auxiliar, comecando ja do segundo
+	
+			for (int i = 1 ; i < resultadoGeralVereadores.getTamanho() ; i++) {
+				
+				aux = (Resultado) resultadoGeralVereadores.getObjeto(i);
+				
+				todosVotos = todosVotos + aux.getResultado();
+				
+				if (primeiro.getResultado() < aux.getResultado()) {
+					segundo = primeiro;
+					primeiro = aux;
+				}else {
+					if(segundo.getResultado()<aux.getResultado()) {
+						segundo = aux;
+					}
+				}
+				
+			}
+			
+			int eleitoresMunicipio = 0;
+			
+			//procura os municipios cujo candidato seja o mesmo para saber qual a quantidade de habitantes presente no municipio
+			for (int i = 0 ; i < municipios.length ; i++) {
+				for (int j = 0 ; j < candidatos.length ; j++) {
+					if (primeiro.getIdCandidato().equals(String.valueOf(candidatos[j].getNumeroCandidato()))) {
+						if (municipios[i].getNomeMunicipio().equals(candidatos[j].getNomeMunicipioCandidato())) {
+							eleitoresMunicipio = municipios[i].getQuantidadeHabitantes();
+							break;
+						}
+					}
+				}
+			}
+		
+			
+			// verifica se a quantidade de eleitores do municipio for menor que 200000, se for nao precisa verificar a porcentagem
+			if(eleitoresMunicipio < 200_000) {
+				
+				System.out.println("O vereador, de numero " + primeiro.getIdCandidato() +  ", ganhou com: " + primeiro.getResultado() + " votos");
+			
+			}else {
+				
+				//calcula a porcentagem em int entre 0 e 100 convertendo de float para fazer a divisao corretamente
+				int porcentagem = (int) (((float)primeiro.getResultado() / todosVotos) * 100);
+			
+				if (porcentagem > 50) {
+					System.out.println("O vereador, de numero " + primeiro.getIdCandidato() +  ", ganhou com: " + primeiro.getResultado() + " votos");
+				}else {
+					System.out.println("O segundo turno irá ser entre os candidatos de numero" + primeiro.getIdCandidato() + " e " + segundo.getIdCandidato());
+				}
+				
+			}
+		}catch(NullPointerException e) {
+			System.out.println("Nao eh possivel calcular prefeito eleito!");
+			System.out.println("Razao 1: Nenhum valor para prefeito foi computado. ");
+			System.out.println("Razao 2: Nenhuma urna foi importada ou arquivos como candidatos e municipios nao foram carregados na etapa 1 do modulo do TRE.");
 
-		}  else {
-			System.out.println("O segundo turno irá ser entre os candidatos de numero" + primeiro.getIdCandidato() + " e " + segundo.getIdCandidato());
 		}
 	}
+
+	
 
 	/**
 	 * @public
 	 * Opções da terceira etapa do módulo TRE
 	 */
 	public static void etapa3TRE() {
-
-		System.out.println("Escolha uma opção: ");
-		System.out.println("a - Importar resultados");
-		System.out.println("b - Listar prefeitos eleitos");
-		System.out.println("c - Listar vereadores eleitos");
-
-		try{
-			String opcao = br.readLine();
-			opcao = opcao.toUpperCase();
-
-			switch(opcao) {
-
-			case "A": 
-				// TRE opções
-				System.out.println();
-				etapaImportarResultados();
-				break;
-			case "B": 
-				listarPrefeitosEleitos();
-				break;
-			case "C": 
-				listarVereadoresEleitos();
-				break;
-			default:
-				etapa3TRE();
-				break;
-
-			}
-		} catch(IOException e) {
-			e.printStackTrace();
-		}
-
-	}
-
-	public static void listarVereadoresEleitos() {
-
-		int todosVotos = 0;
 		
-		Resultado primeiro = (Resultado) resultadoGeralVereadores.getObjeto(0);
-		Resultado aux, segundo = new Resultado("",0);
-
-		for (int i = 1 ; i < resultadoGeralVereadores.getTamanho() ; i++) {
+		String opcao = "";
+		
+		do {
 			
-			aux = (Resultado) resultadoGeralVereadores.getObjeto(i);
+			System.out.println("Escolha uma opção: ");
+			System.out.println("a - Importar resultado de uma urna");
+			System.out.println("b - Listar prefeitos eleitos");
+			System.out.println("c - Listar vereadores eleitos");
+			System.out.println("Z - PARA RETORNAR A ETAPA ANTERIOR");
 			
-			if (primeiro.getResultado() < aux.getResultado()) {
-				segundo = primeiro;
-				primeiro = aux;
+			try{
+				
+				opcao = br.readLine();
+				opcao = opcao.toUpperCase();
+	
+				switch(opcao) {
+				
+				// TRE opções modulo 3
+				case "A": 
+					System.out.println();
+					etapaImportarResultados();
+					break;
+				
+				case "B": 
+					listarPrefeitosEleitos();
+					break;
+				
+				case "C": 
+					listarVereadoresEleitos();
+					break;
+				}
+				
+			} catch(IOException e) {
+				e.printStackTrace();
 			}
-			
-		}
-		int porcentagem = (primeiro.getResultado() / segundo.getResultado()) * 100;
+		}while(!opcao.equalsIgnoreCase("Z"));
 
-		if(porcentagem > 50) {
-			System.out.println("O primeiro prefeito, de numero" + primeiro.getIdCandidato() +  ", ganhou com: " + primeiro.getResultado() + "votos");
-
-		}  else {
-			System.out.println("O segundo turno irá ser entre os candidatos de numero" + primeiro.getIdCandidato() + " e " + segundo.getIdCandidato());
-		}
 	}
 
+	
 	private static void etapaImportarResultados() {
 
 		System.out.println("Informe o endereço do arquivo da urna desejada");
 		String caminho;
 		Resultado [] resultados;
-		Lista listaResultados = new Lista();
 
 		try {
 
@@ -342,45 +440,33 @@ public class MainTRE {
 			resultados = Resultados.importarDadosCandidatos(caminho);
 
 			for (int i = 0 ; i < resultados.length ; i++) {
-				listaResultados.adicionar(resultados[i]);
-			}
-
-			for (int i = 0 ; i < listaResultados.getTamanho() ; i++) {
-
-				Resultado resultado = (Resultado)listaResultados.getObjeto(i);
-
-				for (int j = 0 ; j < candidatos.length ; j++) {
-
-					if (resultado.getIdCandidato().equals(String.valueOf(candidatos[j].getNumeroCandidato()))) {
-
-						if ( candidatos[j].getCargo() == 'P') {
-
-							Resultado geral = (Resultado)resultadoGeralPrefeitos.buscarObjeto(resultado.getIdCandidato());
-
-							if (geral != null) {
-
-								geral = new Resultado(geral.getIdCandidato(), geral.getResultado() + resultado.getResultado());
-
+				//busca se um resultado ja foi computado para esse candidado prefeito ou vereador
+				Resultado resultadoPrefeito = (Resultado) resultadoGeralPrefeitos.buscarObjeto(resultados[i].getIdCandidato());
+				Resultado resultadoVereador = (Resultado) resultadoGeralVereadores.buscarObjeto(resultados[i].getIdCandidato());
+				// se algum deles for diferente de null quer dizer que já foi computado algum deles entao tem que somar mais votos novos
+				if(resultadoPrefeito!=null || resultadoVereador!= null) {
+					if (resultadoPrefeito!=null) {
+						resultadoPrefeito.adicionarVoto(resultados[i].getResultado());
+					}else {
+						resultadoVereador.adicionarVoto(resultados[i].getResultado());
+					}
+				// caso nenhum seja null quer dizer que ainda esse candidato ainda nao foi computado e precisa ser adicionado no resultadoGeral
+				}else {
+					for (int j = 0 ; j < candidatos.length ; j++) {
+						//descobre qual as informacoes do candidato ao encontrar o que tem o mesmo numero no vetor de candidatos
+						// precisa pegar essa informacao para saber se o candidato seria vereador ou prefeito
+						if (resultados[i].getIdCandidato().equals(String.valueOf(candidatos[j].getNumeroCandidato()))) {
+							if(candidatos[j].getCargo()=='P') {
+								resultadoGeralPrefeitos.adicionar(resultados[i]);
 							}else {
-								resultadoGeralPrefeitos.adicionar(resultado);
-							}
-
-						}else {
-
-							Resultado geral = (Resultado)resultadoGeralVereadores.buscarObjeto(resultado.getIdCandidato());
-
-							if (geral != null) {
-
-								geral = new Resultado(geral.getIdCandidato(), geral.getResultado() + resultado.getResultado());
-
-							}else {
-								resultadoGeralVereadores.adicionar(resultado);
-							}
-
+								resultadoGeralVereadores.adicionar(resultados[i]);
+							}	
+							break;
 						}
 					}
 				}
 			}
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
