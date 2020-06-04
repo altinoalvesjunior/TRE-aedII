@@ -29,6 +29,7 @@ public class Urna {
 		System.out.println("Urna instalada com sucesso!");	
 	}
 	
+	//justificar ausencia
 	public void justificarVoto(int tituloEleitoral) {
 
 		boolean existeEleitor = eleitorExiste(tituloEleitoral);
@@ -54,10 +55,12 @@ public class Urna {
 				
 	}
 	
+	// caso condição se justificativa verdadeira, adiciona eleitor a lista
 	public void registroDeQuemJustificou(int tituloEleitoral) {
 		quemJustificou.adicionar(tituloEleitoral);
 	}
-
+	
+	//verifica se eleitor já justificou
 	private boolean verificarSeJustificou(int tituloEleitoral) {
 		Object resultado = quemJustificou.buscarObjeto(tituloEleitoral);
 

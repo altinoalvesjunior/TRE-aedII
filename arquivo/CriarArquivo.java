@@ -10,6 +10,11 @@ import moduloTRE.Candidato;
 
 public class CriarArquivo{
 	
+	/*métodos responsáveis para exportação dos dados para urna. Um arquivo contém os  números dos  títulos  eleitorais  dos  eleitores  que  votarão  na 
+	seção eleitoral relacionada à urna; e outro arquivo texto contendo 
+	todas  as  informações  dos  candidatos  a  prefeito  e  vereador  do 
+	município onde a urna será utilizada. Primeiramente, criando uma subpasta para saída dos arquivos, e em seguida função para escrever no arquivo seguindo padrão.*/
+	
 	public static void criarArquivoNumeroEleitores(String enderecoPasta, Eleitor[] eleitores) {
 
 		//Criação de Subpasta
