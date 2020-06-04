@@ -33,7 +33,7 @@ public class MainTRE {
 		do {
 
 			System.out.println("Escolha uma etapa: ");
-			System.out.println("1 - Antes das eleições – Preparação");
+			System.out.println("1 - Antes das eleições – Preparação e Carregar Arquivos Necesarios do Modulo TRE");
 			System.out.println("3 - Depois das eleições – Divulgação dos resultados");
 			System.out.println("Digite o número da etapa ou -1 para sair: ");
 
@@ -47,11 +47,6 @@ public class MainTRE {
 					// Abrir Etapa 1: Antes das eleições – Preparação
 					limparConsole();
 					etapa1TRE();
-					break;
-
-				case 2: 
-					// Abrir Etapa 2: Durante as eleições
-					//this.etapa2();
 					break;
 
 				case 3: 
