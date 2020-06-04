@@ -183,6 +183,7 @@ public class Urna {
 			
 		}
 		
+		
 		CriarArquivo.criarArquivoResultadoCandidato(endereco, resultadoIndividualPrefeito);
 		CriarArquivo.criarArquivoResultadoCandidato(endereco, resultadoIndividualVereador);
 
