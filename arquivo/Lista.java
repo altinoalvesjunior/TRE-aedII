@@ -16,23 +16,26 @@ public class Lista {
 	// Metodo adicionar()
 	// Possui a funcao de iniciar e adicionar elementos na lista
 	// A lista serve para armazenar as linhas do arquivo para pesquisa e impressao
-	public void adicionar(Object objeto) {
-
+	
+	// metodo de adicionar publico que chama o rescursivo privado
+	public void adicionar (Object objeto) {
 		Celula aux = inicio;
-
 		if (aux == null) {
 
 			inicio = new Celula(objeto);
 
-		} else {
+		}else {
+			adicionarRecursivo(aux, objeto);
+		}
+	}
+	
+	//metodo recursivo de insercao  que verifica se o proximo eh nulo e adiciona, caso contrario navega recursivamente com o proximo
+	private void adicionarRecursivo(Celula aux, Object objeto) {
 
-			while (aux.prox != null) {
-
-				aux = aux.prox;
-			}
-
+		if(aux.prox == null) {
 			aux.prox = new Celula(objeto);
-
+		}else{
+			adicionarRecursivo(aux.prox,objeto);
 		}
 	}
 

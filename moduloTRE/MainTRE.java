@@ -84,7 +84,7 @@ public class MainTRE {
 		String endereco, opcao = "";
 
 		do {
-
+			System.out.println("");
 			System.out.println("Escolha uma opção: ");
 			System.out.println("a - Cadastro de partidos políticos");
 			System.out.println("b - Cadastro de municípios");
@@ -386,7 +386,7 @@ public class MainTRE {
 		String opcao = "";
 		
 		do {
-			
+			System.out.println("");
 			System.out.println("Escolha uma opção: ");
 			System.out.println("a - Importar resultado de uma urna");
 			System.out.println("b - Listar prefeitos eleitos");
