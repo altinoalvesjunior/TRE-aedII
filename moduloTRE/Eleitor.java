@@ -18,7 +18,7 @@ public class Eleitor {
 		this.zonaEleitoral = zonaEleitoral;
 		this.secaoEleitoral = secaoEleitoral;
 	}
-	
+	//commit
 	//Getters e Setters da Classe
 	public String getNomeEleitor() {
 		return nomeEleitor;
